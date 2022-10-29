@@ -1,0 +1,114 @@
+.sprintcontainer {
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: 4fr repeat(3, 5fr);
+    grid-template-rows: repeat(5, min-content);
+    column-gap: 4px;
+    row-gap: 4px;
+
+}
+
+.sprintcontainer > .task {
+    background-color: #323130;
+    padding: 7px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+} 
+/*
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}*/
+
+.box {
+    margin-bottom: 7px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    border: 1px solid #474645;
+    font-size: 70%;
+    background-color: #201f1e;
+}
+
+.box > div {
+    margin: 5px;
+}
+
+.box-bug {
+    border-left: 4px solid brown;
+}
+.box-epic {
+    border-left: 4px solid chocolate;
+}
+.box-feature {
+    border-left: 4px solid violet;
+}
+.box-productitem {
+    border-left: 4px solid blue;
+}
+.box-support {
+    border-left: 4px solid blueviolet;
+}
+.box-task {
+    border-left: 4px solid yellow;
+}
+
+.user_container {
+    display: flex;
+}
+.avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 7px;
+    font-size: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blueviolet;
+}
+.state_container {
+    display: flex;
+    justify-content: space-between;
+}
+.bulle_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bulle {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    margin: 0 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-add-task {
+    width: 20px;
+    height: 20px;
+    background-color: green;
+    color: black;
+    border: 1px solid black;
+    font-weight: 100;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-box {
+    background-color: transparent;
+    border: 1px solid #474645;
+    color: #fff;
+}
+.select-box {
+    background-color: #323130;
+    border: 1px solid #474645;
+    color: #fff;
+}

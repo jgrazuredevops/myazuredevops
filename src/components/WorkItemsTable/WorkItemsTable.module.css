@@ -1,0 +1,63 @@
+.grid {
+    display: grid;
+	grid-template-columns: 1fr 7fr 3fr 2fr 3fr 1fr;
+    /*overflow: scroll;*/
+    width: 100%;
+    margin-top: 1rem;
+}
+.header {
+    font-size: 12px!important;
+    font-weight: 400;
+    height: .5rem!important;
+}
+.grid > div {
+    font-size: 14px;
+    height: 1.5rem;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: .5rem;
+}
+.grid > div.titleicon svg {
+    margin-right: 6px;
+}
+.grid div:hover {
+    background-color: #292827;
+}
+.grid .assignto {
+
+}
+.avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 7px;
+    font-size: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bulle {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    margin: 0 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cellcenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tag {
+    background-color: #223b59;
+    color: #f9f9fa;
+    padding: 3px 5px;
+    margin-right: 5px;
+}
+.margegauche {
+    margin-left: 3px;
+}

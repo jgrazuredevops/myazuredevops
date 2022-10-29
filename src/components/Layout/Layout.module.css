@@ -1,0 +1,12 @@
+.page {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #201f1e;
+    /*height: 89vh;*/
+}
+
+
+.main {
+    flex: 1;
+}

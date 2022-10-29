@@ -1,0 +1,43 @@
+
+.active {
+    background-color: #474645;
+}
+.spacebtw {
+    margin-top: 1.2rem;
+}
+
+.header {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+.headermini {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.navlist {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.navlist li {
+    padding: .5rem 0;
+}
+
+.header:hover,
+.navlist li:hover,
+.itemactive{
+    background-color: #525150;
+}
+.navlist li:hover {
+    cursor: pointer;
+}
+.navlist li a {
+}
+
+.title {
+    margin-left: 5px;
+    font-size: 90%;
+}
