@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { initWorkItemsFully } from '../../store/actions/workItems'
 import ButtonAddTask from './ButtonAddTask';
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 
 const SprintGrid = () => {
 
@@ -67,9 +69,12 @@ const SprintGrid = () => {
     }, []);
 
     return (
-        <div className="sprintcontainer">
-            {gridLines}
-        </div>
+        <SimpleBar style={{ maxHeight: '90vh', width: '100%' }} >
+            <h4 class="titre">Tableau Kanban</h4>
+            <div className="sprintcontainer">
+                {gridLines}
+            </div>
+        </SimpleBar>
     )
 }
 

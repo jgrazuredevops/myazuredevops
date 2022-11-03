@@ -7,18 +7,20 @@ import FilterBar from '../FilterBar/FilterBar';
 import { useEffect, useState } from 'react';
 import styles from '../UI/Button/Button.module.css'
 import {NavLink} from "react-router-dom";
+import stylesButton from './WorkItemsButtons.module.css';
+import { WORKITEMTYPES } from '../../conf/config';
 
 const WorkItemsButtons = (props) => {
 
     const dispatch = useDispatch();
     const [isFilterOpen,setIsOpenFilterOpen] = useState(false);
     const typesMap = new Map();
-    typesMap.set('bug', 'Bug');
-    typesMap.set('epic', 'Epic');
-    typesMap.set('feature', 'Feature');
-    typesMap.set('productitem', 'Product Backlog Item');
-    typesMap.set('support', 'Support');
-    typesMap.set('task', 'Task');
+    typesMap.set(WORKITEMTYPES.BUG.key, WORKITEMTYPES.BUG.text);
+    typesMap.set(WORKITEMTYPES.EPIC.key, WORKITEMTYPES.EPIC.text);
+    typesMap.set(WORKITEMTYPES.FEATURE.key, WORKITEMTYPES.FEATURE.text);
+    typesMap.set(WORKITEMTYPES.PRODUCTBACKLOGITEM.key, WORKITEMTYPES.PRODUCTBACKLOGITEM.text);
+    typesMap.set(WORKITEMTYPES.SUPPORT.key, WORKITEMTYPES.SUPPORT.text);
+    typesMap.set(WORKITEMTYPES.TASK.key, WORKITEMTYPES.TASK.text);
     let selectTypes = [];
 
     for (let key of typesMap.keys()) {
@@ -36,21 +38,21 @@ const WorkItemsButtons = (props) => {
             <div style={{display: 'flex'}}>
                 <Button icon={icons.iconplus} label="New Work Item" name="btnNewWorkItem">
 
-                    <NavLink to="newwi/bug">{icons.iconbug} <span>Bug</span></NavLink>
-                    <NavLink to="newwi/epic">{icons.iconepic} <span>Epic</span></NavLink>
-                    <NavLink to="newwi/feature">{icons.iconfeature} <span>Feature</span></NavLink>
-                    <NavLink to="newwi/productitem">{icons.iconproductitem} <span>Product Backlog Item</span></NavLink>
-                    <NavLink to="newwi/support">{icons.iconsupport} <span>Support</span></NavLink>
-                    <NavLink to="newwi/task">{icons.icontask} <span>Task</span></NavLink>
+                    <NavLink to="newwi/bug">{icons.iconbug} <span className={stylesButton.linkItem}>{WORKITEMTYPES.BUG.text}</span></NavLink>
+                    <NavLink to="newwi/epic">{icons.iconepic} <span className={stylesButton.linkItem}>{WORKITEMTYPES.EPIC.text}</span></NavLink>
+                    <NavLink to="newwi/feature">{icons.iconfeature} <span className={stylesButton.linkItem}>{WORKITEMTYPES.FEATURE.text}</span></NavLink>
+                    <NavLink to="newwi/productitem">{icons.iconproductitem} <span className={stylesButton.linkItem}>{WORKITEMTYPES.PRODUCTBACKLOGITEM.text}</span></NavLink>
+                    <NavLink to="newwi/support">{icons.iconsupport} <span className={stylesButton.linkItem}>{WORKITEMTYPES.SUPPORT.text}</span></NavLink>
+                    <NavLink to="newwi/task">{icons.icontask} <span className={stylesButton.linkItem}>{WORKITEMTYPES.TASK.text}</span></NavLink>
                 </Button>
-                <Button icon={icons.iconarrow} label="Open in Queries"></Button>
-                <Button icon={icons.icontournevis} label="Column Options"></Button>
-                <Button icon={icons.iconimport} label="Import Work Items"></Button>
+                <Button icon={icons.iconarrow} label="Open in Queries" onClickEvent={()=> alert('Non fonctionnel => seul New Work Item fonctionne')}></Button>
+                <Button icon={icons.icontournevis} label="Column Options" onClickEvent={()=> alert('Non fonctionnel => seul New Work Item fonctionne')}></Button>
+                <Button icon={icons.iconimport} label="Import Work Items" onClickEvent={()=> alert('Non fonctionnel => seul New Work Item fonctionne')}></Button>
             </div>
             <div style={{display: 'flex'}}>
-                <Button type="small" icon={icons.iconsettings}></Button>
+                <Button type="small" icon={icons.iconsettings} onClickEvent={()=> alert('Non fonctionnel, seul le bouton filtre fonctionne')}></Button>
                 <Button type="small" icon={icons.iconfilter} onClickEvent={setIsOpenFilterOpen}></Button>              
-                <Button type="small" icon={icons.iconbigscreen}></Button>
+                <Button type="small" icon={icons.iconbigscreen} onClickEvent={()=> alert('Non fonctionnel, seul le bouton filtre fonctionne')}></Button>
             </div>
         </div>,
         isFilterOpen?<FilterBar>

@@ -26,10 +26,13 @@
 .children {
     position: absolute;
     left: 0;
-    transform: translateY(58%);
+    top: 2.5rem;
+    /* transform: translateY(64%);*/
     background-color: #323130;
     white-space: nowrap;
     color: #F5F4F4;
+    padding: .5rem;
+    z-index: 9999;
 }
 .children > a {
     height: 2rem;

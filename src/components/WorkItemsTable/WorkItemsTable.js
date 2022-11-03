@@ -35,8 +35,9 @@ const WorkItemsTable = (props) => {
         }
         const icontypename = 'icon'+d.type;
         return [
+            <div><input type="button" class="btn small" value="Delete" onClick={()=>deleteWI(d.name)}/></div>,
             <div>{d.id}</div>,
-            <div className={styles.titleicon}>{icons[icontypename]} <NavLink to={`editwi/${d.name}`}>{d.title}</NavLink> <span onClick={()=>deleteWI(d.name)}>X</span></div>,
+            <div className={styles.titleicon}>{icons[icontypename]} <NavLink to={`editwi/${d.name}`} className={styles.textW}>{d.title}</NavLink></div>,
             <div>
                 <div className={styles.avatar} style={{'backgroundColor': d.assignto ? d.assignto.color: `#FFF`}}>{d.assignto && d.assignto.surname && getAvatar(d.assignto.surname)}</div>
                 {d.assignto && d.assignto.surname}
@@ -51,9 +52,10 @@ const WorkItemsTable = (props) => {
     });
 
     return (
-        <SimpleBar style={{ maxHeight: 250, width: '100%' }} >
+        <SimpleBar style={{ maxHeight: '70vh', width: '100%' }} >
 
             <div className={styles.grid}>
+                <div></div>
                 <div className={styles.header}>ID</div>
                 <div className={styles.header}>Title</div>
                 <div className={styles.header}>Assign to</div>

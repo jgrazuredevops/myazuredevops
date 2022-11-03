@@ -14,9 +14,7 @@ const Header = (props) => {
         <header className={styles.header}>
             <h3 className={logocss}>{props.bigSidebar?'Azure Devops':iconSummary}</h3>
             <ul className={styles.breadcrumb}>
-                <li><a href="#">reseau-canope</a></li> 
-                <li>/</li>
-                <li><a href="#">Magistere</a></li>
+                <li><a href="#">MyAzureDevops</a></li> 
                 <li>/</li>
                 <li><a href="#">Boards</a></li>
                 <li>/</li> 

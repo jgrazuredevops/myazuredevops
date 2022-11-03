@@ -17,13 +17,11 @@ const Layout = (props) => {
         <div className={styles.page} style={{border: '0px solid orangered', flexGrow: 1, overflow: 'hidden'}} >
             <SideBar bigSidebar={bigSidebar} toggleMenu={toggleSideBar}/>
             <main className={styles.main}>
-                <SimpleBar style={{ maxHeight: 500 }}>
-                    {props.children}
-                </SimpleBar>
+                {props.children}
             </main>
         </div>,
 
-        <div style={{backgroundColor:  'red', height: '40px'}}><h2>Ceci est le footer de test </h2></div>
+        <div style={{backgroundColor:  'red', height: '40px', display: 'none'}}><h2>Ceci est le footer de test </h2></div>
     ];
 }
 

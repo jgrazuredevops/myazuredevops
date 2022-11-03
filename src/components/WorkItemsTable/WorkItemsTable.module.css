@@ -1,6 +1,6 @@
 .grid {
     display: grid;
-	grid-template-columns: 1fr 7fr 3fr 2fr 3fr 1fr;
+	grid-template-columns: 1fr 1fr 7fr 3fr 2fr 3fr 1fr;
     /*overflow: scroll;*/
     width: 100%;
     margin-top: 1rem;
@@ -60,4 +60,8 @@
 }
 .margegauche {
     margin-left: 3px;
+}
+.textW {
+    color: white;
+    text-decoration: none;
 }

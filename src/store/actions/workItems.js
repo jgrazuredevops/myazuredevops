@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import { URL_API } from '../../conf/config';
 
 export const initWorkItems = (workitems) => {
     return {
@@ -52,7 +53,7 @@ export const openButton = (name) => {
 export const initWorkItemsFully = () => {
     return async (dispatch) => {
         try {
-            const workitems = await fetch('https://azuredevops-a0860-default-rtdb.europe-west1.firebasedatabase.app/workitem.json', {method: 'GET'});
+            const workitems = await fetch(`${URL_API}/workitem.json`, {method: 'GET'});
             const workitemsjson = await workitems.json();
             console.log("workitemsjson!!!", workitemsjson);
             const fulltab = Object.keys(workitemsjson).map(key =>{
@@ -81,7 +82,7 @@ export const addWorkItemFully = ({title, assignto, state, type, parentId}) => {
                 comments: [],
                 parentId
             };
-            const wki = await fetch('https://azuredevops-a0860-default-rtdb.europe-west1.firebasedatabase.app/workitem.json', {
+            const wki = await fetch(`${URL_API}/workitem.json`, {
                 method: 'POST',
                 body: JSON.stringify(item)
             });
@@ -110,7 +111,7 @@ export const updateWorkItemFully = ({name, title, assignto, state, type, parentI
                 comments: [],
                 parentId
             };
-            const wki = await fetch(`https://azuredevops-a0860-default-rtdb.europe-west1.firebasedatabase.app/workitem/${name}.json`, {
+            const wki = await fetch(`${URL_API}/workitem/${name}.json`, {
                 method: 'PUT',
                 body: JSON.stringify(item)
             });
@@ -130,7 +131,7 @@ export const deleteWorkItemFully = (name) => {
     return async (dispatch) => {
         try {
             console.log('ready ?');
-            const wki = await fetch(`https://azuredevops-a0860-default-rtdb.europe-west1.firebasedatabase.app/workitem/${name}.json`, {
+            const wki = await fetch(`${URL_API}/workitem/${name}.json`, {
                 method: 'DELETE'
             });
             if (wki.status === 200) {

@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useParams, Redirect } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Select from "react-select";
+import { URL_API, WORKITEMTYPES, STATES } from '../../conf/config';
 
 
 const WorkItemForm = props => {
@@ -31,13 +32,13 @@ const WorkItemForm = props => {
                 updatedAt: Date.now()
             };
             // modif par defaut
-            let urlapi = `https://azuredevops-a0860-default-rtdb.europe-west1.firebasedatabase.app/workitem/${name}.json`;
+            let urlapi = `${URL_API}/workitem/${name}.json`;
             let headers = {
                 method: 'PUT',
                 body: JSON.stringify(item)
             };
             if (type){ // creation
-                urlapi = `https://azuredevops-a0860-default-rtdb.europe-west1.firebasedatabase.app/workitem.json`;
+                urlapi = `${URL_API}/workitem.json`;
                 headers = {
                     method: 'POST',
                     body: JSON.stringify(item)
@@ -68,7 +69,7 @@ const WorkItemForm = props => {
         else {
             try {
                 console.log('id='+ name)
-                const workitem = await fetch(`https://azuredevops-a0860-default-rtdb.europe-west1.firebasedatabase.app/workitem/${name}.json`, {method: 'GET'});
+                const workitem = await fetch(`${URL_API}/workitem/${name}.json`, {method: 'GET'});
                 workitemjson = await workitem.json();
                 setValue("title", workitemjson.title);
                 setValue("type", workitemjson.type);
@@ -96,36 +97,44 @@ const WorkItemForm = props => {
 
             {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
             <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-                Titre: <input defaultValue={workitemjson.title} {...register("title", { required: true })} />
+            <div class={styles.frmLine}>
+                <div class={styles.frmTitle}>Titre</div> 
+                <div class={styles.frmInput}><input class="input-box" defaultValue={workitemjson.title} {...register("title", { required: true })} /></div>
             </div>            
-            <div>
-                Description: <input defaultValue={workitemjson.description} {...register("description", { required: false })} />
+            <div class={styles.frmLine}>
+                <div class={styles.frmTitle}>Description</div>
+                <div class={styles.frmInput}>
+                    <input class="input-box" defaultValue={workitemjson.description} {...register("description", { required: false })} />
+                </div>
             </div>            
-            <div>
-                Type:                 
-                <select {...register("type")}>
-                    <option value="bug">bug</option>
-                    <option value="epic">epic</option>
-                    <option value="feature">feature</option>
-                    <option value="productitem">productitem</option>
-                    <option value="support">support</option>
-                    <option value="task">task</option>
-                </select>
+            <div class={styles.frmLine}>
+                <div class={styles.frmTitle}>Type</div>
+                <div class={styles.frmInput}>
+                    <select class="select-box" {...register("type")}>
+                        <option value={WORKITEMTYPES.BUG.key}>{WORKITEMTYPES.BUG.text}</option>
+                        <option value={WORKITEMTYPES.EPIC.key}>{WORKITEMTYPES.EPIC.text}</option>
+                        <option value={WORKITEMTYPES.FEATURE.key}>{WORKITEMTYPES.FEATURE.text}</option>
+                        <option value={WORKITEMTYPES.PRODUCTBACKLOGITEM.key}>{WORKITEMTYPES.PRODUCTBACKLOGITEM.text}</option>
+                        <option value={WORKITEMTYPES.SUPPORT.key}>{WORKITEMTYPES.SUPPORT.text}</option>
+                        <option value={WORKITEMTYPES.TASK.key}>{WORKITEMTYPES.TASK.text}</option>
+                    </select>
+                </div>
             </div>    
-            <div>
-                State:
-                <select {...register("state")}>
-                    <option value="investigation">investigation</option>
-                    <option value="new">new</option>
-                    <option value="pending">pending</option>
-                </select>
+            <div class={styles.frmLine}>
+                <div class={styles.frmTitle}>State</div>
+                <div class={styles.frmInput}>
+                    <select class="select-box" {...register("state")}>
+                        <option value={STATES.INVESTIGATION.key}>{STATES.INVESTIGATION.text}</option>
+                        <option value={STATES.NEW.key}>{STATES.NEW.text}</option>
+                        <option value={STATES.PENDING.key}>{STATES.PENDING.text}</option>
+                    </select>
+                </div>
             </div>
 
             {/* errors will return when field validation fails  */}
             {errors.title && <span>This field is required</span>}
-            <div>        
-                <input type="submit" />
+            <div class={styles.frmLine}>        
+                <input type="submit" class="btn"/>
             </div>
 
             </form>
