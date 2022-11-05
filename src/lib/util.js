@@ -1,3 +1,4 @@
+import { WORKITEMTYPES } from "../conf/config";
 
 const getColorState = (state) => {
     switch(state){
@@ -35,4 +36,10 @@ const getUserObjFromId = (id) => {
         return user[0];
     return {};
 }
-export {getColorState, getColor, getAvatar, getUserObjFromId};
+
+const getWorkitemsTypes = () => {
+    
+    return Object.keys(WORKITEMTYPES).map(type => type.key);
+}
+
+export {getColorState, getColor, getAvatar, getUserObjFromId, getWorkitemsTypes};

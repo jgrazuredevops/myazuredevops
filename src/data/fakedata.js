@@ -1,7 +1,7 @@
 export const users = [
-    {id: 1, surname: 'John Doe', email: 'johndoe@free.fr'},
-    {id: 2, surname: 'Paul Boo', email: 'paul.boo@azure.com'},
-    {id: 3, surname: 'Stefanie Toute', email: 'stefietoute@yahoo.com'}
+    {id: 1, surname: 'John Doe', email: 'johndoe@free.fr', color: '#001e51'},
+    {id: 2, surname: 'Paul Boo', email: 'paul.boo@azure.com', color: '#027d00'},
+    {id: 3, surname: 'Stefanie Toute', email: 'stefietoute@yahoo.com', color: '#5c2893'}
 ];
 
 export const workitems = [

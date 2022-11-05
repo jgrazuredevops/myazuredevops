@@ -1,4 +1,4 @@
-import {users, workitems} from '../../data/fakedata';
+import {users} from '../../data/fakedata';
 import styles from './Workitems.module.css';
 import WorkItemsTable from '../WorkItemsTable/WorkItemsTable';
 import WorkItemsButtons from '../WorkItemsButtons/WorkItemsButtons';
@@ -7,7 +7,8 @@ import { useParams, Redirect } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Select from "react-select";
 import { URL_API, WORKITEMTYPES, STATES } from '../../conf/config';
-
+import { getWorkitemsTypes } from '../../lib/util';
+import Spinner from '../UI/Spinner/Spinner'
 
 const WorkItemForm = props => {
 
@@ -21,11 +22,16 @@ const WorkItemForm = props => {
         console.log(data);console.log('id='+ name)
         try {
             
+            let assignto = [{id: 1, surname: 'John Doe', email: 'johndoe@free.fr', color: '#001e51'}];
+            if (data.userid) {
+                assignto = users.filter(u => u.id === +data.userid);
+            }
+            console.log('uuuu', assignto)
             let item = {
                 title: data.title,
                 type: data.type,
                 description: data.description,
-                assignto: {id: 1, surname: 'John Doe', email: 'johndoe@free.fr', color: '#001e51'},
+                assignto: assignto[0],
                 state: data.state,
                 tags: [],
                 comments: [],
@@ -59,27 +65,32 @@ const WorkItemForm = props => {
     const defaultwi = {title: '', description: '', type: ''};
     let [workitemjson, setWorkitemjson] = useState(defaultwi);
     let [redirect, setRedirect] = useState(false);
+    let [loading, setLoading] = useState(false);
 
     useEffect(async () => {
 
-        if (type && ['bug', 'epic', 'feature', 'productitem', 'support', 'task'].includes(type)) {
+        if (type && getWorkitemsTypes().includes(type)) {
             setValue("type", type);
             setWorkitemjson(defaultwi);
         }
         else {
             try {
+                setLoading(true);
                 console.log('id='+ name)
                 const workitem = await fetch(`${URL_API}/workitem/${name}.json`, {method: 'GET'});
                 workitemjson = await workitem.json();
                 setValue("title", workitemjson.title);
                 setValue("type", workitemjson.type);
                 setValue("state", workitemjson.state);
+                setValue("userid", workitemjson.assignto.id);
                 console.log("workitemjson!!!", workitemjson);
                 setWorkitemjson(workitemjson);
+                setLoading(false);
             }
             catch(err){
                 console.log('erreur=' + err);
                 setWorkitemjson({title: 'error loading', type: ''});
+                setLoading(false);
             }
         }
     }, []);
@@ -93,9 +104,9 @@ const WorkItemForm = props => {
         
         <div className={styles.table} style={{display: 'flex', flexDirection: 'column'}}>
             {goto}
+            { loading ? <Spinner/> : <div>
             <h4>{workitemjson.title.length === 0 ? 'Création':'Edition'} d'un WorkItem {name}</h4>
 
-            {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
             <form onSubmit={handleSubmit(onSubmit)}>
             <div class={styles.frmLine}>
                 <div class={styles.frmTitle}>Titre</div> 
@@ -130,14 +141,23 @@ const WorkItemForm = props => {
                     </select>
                 </div>
             </div>
+            <div class={styles.frmLine}>
+                <div class={styles.frmTitle}>Utilisateur</div>
+                <div class={styles.frmInput}>
+                    <select class="select-box" {...register("userid")}>
+                        { users.map(u => <option value={u.id}>{u.surname}</option>)}
+                    </select>
+                </div>
+            </div>
 
-            {/* errors will return when field validation fails  */}
-            {errors.title && <span>This field is required</span>}
+            {errors.title && <span>Ce champ est requis</span>}
             <div class={styles.frmLine}>        
                 <input type="submit" class="btn"/>
             </div>
 
             </form>
+            </div>
+            }
         </div>
     );
 }

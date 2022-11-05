@@ -45,36 +45,36 @@ const SideBar = (props) => {
                     <nav className={styles.nav} style={bigSidebar?{'overflow-y':'hidden'}:null}>
 
                         <NavSection shortsidebar={!bigSidebar} icon={iconOverview} title="Overview" open={openSection==='Overview'?true:false} actived={activeSection}>
-                            <NavItem icon={iconSummary} to="/">Summary</NavItem>
-                            <NavItem icon={iconDice} to="/">Dashboards</NavItem>
-                            <NavItem icon={iconCube} to="/backlog">Wiki</NavItem>
+                            <NavItem icon={iconSummary} to="/notdev">Summary</NavItem>
+                            <NavItem icon={iconDice} to="/notdev">Dashboards</NavItem>
+                            <NavItem icon={iconCube} to="/notdev">Wiki</NavItem>
                         </NavSection>
 
                         <NavSection shortsidebar={!bigSidebar} icon={iconBoards} title="Boards" open={openSection==='Boards'?true:false} actived={activeSection}>
                             <NavItem icon={iconSummary} to="/">Work items</NavItem>
-                            <NavItem icon={iconCube} to="/">Boards</NavItem>
-                            <NavItem icon={iconEdit} to="/backlog">Backlogs</NavItem>
+                            <NavItem icon={iconCube} to="/notdev">Boards</NavItem>
+                            <NavItem icon={iconEdit} to="/notdev">Backlogs</NavItem>
                             <NavItem icon={iconSummary} to="/sprints">Sprints</NavItem>
-                            <NavItem icon={iconCube} to="/">Queries</NavItem>
-                            <NavItem icon={iconDice} to="/">Estimate</NavItem>
+                            <NavItem icon={iconCube} to="/notdev">Queries</NavItem>
+                            <NavItem icon={iconDice} to="/notdev">Estimate</NavItem>
                         </NavSection>
 
                         <NavSection shortsidebar={!bigSidebar} icon={iconRepos} title="Repos" open={openSection==='Repos'?true:false} actived={activeSection}>
-                            <NavItem icon={iconDice} to="/">Files</NavItem>
-                            <NavItem icon={iconEdit} to="/">Commits</NavItem>
-                            <NavItem icon={iconCube} to="/backlog">Pushes</NavItem>
-                            <NavItem icon={iconEdit} to="/sprints">Branches</NavItem>
-                            <NavItem icon={iconDice} to="/">Tags</NavItem>
-                            <NavItem icon={iconCube} to="/">Pull requests</NavItem>
+                            <NavItem icon={iconDice} to="/notdev">Files</NavItem>
+                            <NavItem icon={iconEdit} to="/notdev">Commits</NavItem>
+                            <NavItem icon={iconCube} to="/notdev">Pushes</NavItem>
+                            <NavItem icon={iconEdit} to="/notdev">Branches</NavItem>
+                            <NavItem icon={iconDice} to="/notdev">Tags</NavItem>
+                            <NavItem icon={iconCube} to="/notdev">Pull requests</NavItem>
                         </NavSection>
 
                         <NavSection shortsidebar={!bigSidebar} icon={iconPipelines} title="Pipelines" open={openSection==='Pipelines'?true:false} actived={activeSection}>
-                            <NavItem icon={iconSummary} to="/">Pipelines</NavItem>
-                            <NavItem icon={iconDice} to="/">Environments</NavItem>
-                            <NavItem icon={iconCube} to="/backlog">Releases</NavItem>
-                            <NavItem icon={iconEdit} to="/sprints">Library</NavItem>
-                            <NavItem icon={iconDice} to="/">Task groups</NavItem>
-                            <NavItem icon={iconCube} to="/">Deployment groups</NavItem>
+                            <NavItem icon={iconSummary} to="/notdev">Pipelines</NavItem>
+                            <NavItem icon={iconDice} to="/notdev">Environments</NavItem>
+                            <NavItem icon={iconCube} to="/notdev">Releases</NavItem>
+                            <NavItem icon={iconEdit} to="/notdev">Library</NavItem>
+                            <NavItem icon={iconDice} to="/notdev">Task groups</NavItem>
+                            <NavItem icon={iconCube} to="/notdev">Deployment groups</NavItem>
                         </NavSection>
                     </nav>
                 </SimpleBar>

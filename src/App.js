@@ -35,8 +35,8 @@ const App = (props) => {
             <Route path="/" exact component={WorkItems} />
             <Route path="/editwi/:name" exact component={WorkItemForm} />
             <Route path="/newwi/:type" exact component={WorkItemForm} />
-            <Route path="/backlog" component={Backlog} />
             <Route path="/sprints" exact component={SprintGrid} />
+            <Route path="/notdev" exact component={Backlog} />
           </Switch>
         </Layout>
       </Router>

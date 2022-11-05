@@ -21,6 +21,7 @@ const SprintGrid = () => {
     };
 
     const [newTask, setNewTask] = useState('');
+    const [loading, setLoading] = useState(false);
     console.log(newTask)
 
     let taskBoxesChildren = workitems.filter(item => {
@@ -65,7 +66,7 @@ const SprintGrid = () => {
     });
 
     useEffect(() => {
-        dispatch(initWorkItemsFully());
+        dispatch(initWorkItemsFully(setLoading));
     }, []);
 
     return (

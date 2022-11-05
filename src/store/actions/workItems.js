@@ -50,8 +50,9 @@ export const openButton = (name) => {
     }
 }
 
-export const initWorkItemsFully = () => {
+export const initWorkItemsFully = (setLoader) => {
     return async (dispatch) => {
+        setLoader(true);
         try {
             const workitems = await fetch(`${URL_API}/workitem.json`, {method: 'GET'});
             const workitemsjson = await workitems.json();
@@ -61,10 +62,12 @@ export const initWorkItemsFully = () => {
             });
             fulltab.sort((a,b) =>  b.updatedAt - a.updatedAt);
             dispatch(initWorkItems(fulltab));
+            setLoader(false);
         }
         catch(err){
             console.log('erreur=' + err);
             dispatch(initWorkItems([]));
+            setLoader(false);
         } 
     }
 }
