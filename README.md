@@ -10,7 +10,9 @@ Ce projet a été créé à l'aide de [Create React App](https://github.com/face
 Utilise l'outil Firebase pour la persistance des données dans le cloud (https://firebase.google.com)
 
 Plusieurs techniques pour une même fonctionnalité ont pu être utilisées:
+
 Redux: aussi bien avec les class components qu'avec les hooks 
+
 Intégration des css : modules CSS, pur css, ...
 
 

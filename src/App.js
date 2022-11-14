@@ -1,7 +1,7 @@
 
 import styles from './App.module.css';
 import Layout from './components/Layout/Layout';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
@@ -37,6 +37,7 @@ const App = (props) => {
             <Route path="/newwi/:type" exact component={WorkItemForm} />
             <Route path="/sprints" exact component={SprintGrid} />
             <Route path="/notdev" exact component={Backlog} />
+            <Redirect to="/notdev" />
           </Switch>
         </Layout>
       </Router>
