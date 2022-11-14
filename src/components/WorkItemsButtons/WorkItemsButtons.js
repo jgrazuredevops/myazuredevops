@@ -27,12 +27,6 @@ const WorkItemsButtons = (props) => {
         selectTypes.push(<div onClick={(e)=> {e.stopPropagation();props.onWorkItemFilterType(key)}}>{props.filtertypes.includes(key)?icons.iconcheckboxfull:icons.iconcheckboxempty}  {icons[`icon${key}`]} <span>{typesMap.get(key)}</span></div>);
     }
 
-                    /*<div onClick={()=> dispatch(actions.addWorkItemFully('bug'))}>{icons.iconbug} <span>Bug</span></div>
-                    <div onClick={()=> dispatch(actions.addWorkItemFully('epic'))}>{icons.iconepic} <span>Epic</span></div>
-                    <div onClick={()=> dispatch(actions.addWorkItemFully('feature'))}>{icons.iconfeature} <span>Feature</span></div>
-                    <div onClick={()=> dispatch(actions.addWorkItemFully('productitem'))}>{icons.iconproductitem} <span>Product Backlog Item</span></div>
-                    <div onClick={()=> dispatch(actions.addWorkItemFully('support'))}>{icons.iconsupport} <span>Support</span></div>
-                    <div onClick={()=> dispatch(actions.addWorkItemFully('task'))}>{icons.icontask} <span>Task</span></div>*/
     return [
         <div style={{display: 'flex', zIndex: 100, justifyContent: 'space-between', width: '100%', paddingBottom: '10px', borderBottom: '1px solid #313130'}}>
             <div style={{display: 'flex'}}>
@@ -61,7 +55,7 @@ const WorkItemsButtons = (props) => {
 </Button>
 <Button label="Assign To" name="btnFilterAssignTo">
         {[{id: 2, surname:'Paul Boo', color: '#027d00'},{id: 3, surname:'John Fer', color: '#001e51'}].map(user=>{
-            return <div onClick={(e)=> {e.stopPropagation();props.onWorkItemFilterUser(user.id)}}>{props.filterusers.includes(user.id)?icons.iconcheckboxfull:icons.iconcheckboxempty} {icons.iconbug} <span>{user.surname}</span></div>
+            return <div onClick={(e)=> {e.stopPropagation();props.onWorkItemFilterUser(user.id)}}>{props.filterusers.includes(user.id)?icons.iconcheckboxfull:icons.iconcheckboxempty} {icons.iconbug} <span>{user.surname} (non fonctionnel)</span></div>
         })}
 </Button>
 <Button label="States" name="btnFilterState">

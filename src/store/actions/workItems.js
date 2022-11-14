@@ -56,7 +56,7 @@ export const initWorkItemsFully = (setLoader) => {
         try {
             const workitems = await fetch(`${URL_API}/workitem.json`, {method: 'GET'});
             const workitemsjson = await workitems.json();
-            console.log("workitemsjson!!!", workitemsjson);
+
             const fulltab = Object.keys(workitemsjson).map(key =>{
                 return {...workitemsjson[key], name: key};
             });
@@ -90,7 +90,7 @@ export const addWorkItemFully = ({title, assignto, state, type, parentId}) => {
                 body: JSON.stringify(item)
             });
             const wkijson = await wki.json();
-            console.log(wkijson.name);
+
             item.name = wkijson.name;
             dispatch(addWorkItem(item));
         }

@@ -19,14 +19,12 @@ const WorkItemForm = props => {
     const { name, type } = useParams();
 
     const onSubmit = async (data) => {
-        console.log(data);console.log('id='+ name)
         try {
             
             let assignto = [{id: 1, surname: 'John Doe', email: 'johndoe@free.fr', color: '#001e51'}];
             if (data.userid) {
                 assignto = users.filter(u => u.id === +data.userid);
             }
-            console.log('uuuu', assignto)
             let item = {
                 title: data.title,
                 type: data.type,
@@ -51,11 +49,8 @@ const WorkItemForm = props => {
                 };
             }
             const wku = await fetch(urlapi, headers);
-            console.log('rrr')
             const wkujson = await wku.json();
-            console.log('wkujson=', wkujson)
             setRedirect(true)
-
         }
         catch(err){
             console.log('erreur=' + err);
@@ -76,14 +71,12 @@ const WorkItemForm = props => {
         else {
             try {
                 setLoading(true);
-                console.log('id='+ name)
                 const workitem = await fetch(`${URL_API}/workitem/${name}.json`, {method: 'GET'});
                 workitemjson = await workitem.json();
                 setValue("title", workitemjson.title);
                 setValue("type", workitemjson.type);
                 setValue("state", workitemjson.state);
                 setValue("userid", workitemjson.assignto.id);
-                console.log("workitemjson!!!", workitemjson);
                 setWorkitemjson(workitemjson);
                 setLoading(false);
             }

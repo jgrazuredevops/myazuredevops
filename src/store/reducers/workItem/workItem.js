@@ -36,16 +36,11 @@ const reducer = ( state = initialState, action ) => {
 
         case 'ADD_WORKITEM':
             console.log('ADD_WORKITEM');
-            //const maxid = state.workitems.reduce((prev, curr)=> {
-            //    return (prev.id > curr.id) ? prev : curr
-            //}, {id: 0});
-            //const newitem = action
             return {...state, workitems: [...state.workitems, action.workitem]};
 
         case 'UPD_WORKITEM':
             console.log('UPD_WORKITEM');
             const updworkitems = state.workitems.map(item => {
-                console.log('je compare:', item.name + ' et ' + action.workitem.name)
                 if (item.name === action.workitem.name){
                     console.log('found!', action.workitem)
                     return action.workitem;
@@ -70,22 +65,15 @@ const reducer = ( state = initialState, action ) => {
             let wks = null;
             if (state.filtertype.includes(action.itemtype)){ // je le retire puisqu'il y est
                 filtertype = state.filtertype.filter(t=>t!==action.itemtype);
-                //wks = state.workitems; // pas bon, il faut remettre les wi du type qui a été enlevé
             } else { // je l'ajoute puisqu'il n'existe pas
                 filtertype = [...state.filtertype, action.itemtype];
-                //je filtre les workitems
-                //wks = state.workitems.filter(w => w.type === action.itemtype);
             }
 
             let wiFilterMultipleType = [];
             filtertype.forEach(type => {
-                console.log('je filtre sur '+ type)
                 let wiByType = allWorkitems.filter(w => w.type === type);
-                console.log(wiByType)
                 wiFilterMultipleType = wiFilterMultipleType.concat(wiByType);
             });
-            console.log({...state, filtertype: filtertype,wiFilterMultipleType})
-            //TODO ligne 68
             return {...state, workitems: filtertype.length > 0 ?wiFilterMultipleType:allWorkitems, allWorkitems, filtertype: filtertype};
 
         case 'FILTERUSER_WORKITEM':
@@ -95,18 +83,11 @@ const reducer = ( state = initialState, action ) => {
             } else {
                 filteruser = [...state.filteruser, action.itemuser];
             }
-            console.log(filteruser);
             return {...state, filteruser: filteruser};
 
         case 'OPEN_BUTTON':
             console.log('OPEN_BUTTON');
             let buttonsopened = '';
-            /*if (state.buttonsopened.includes(action.name)){
-                buttonsopened = state.buttonsopened.filter(t=>t!=action.name);
-            } else {
-                buttonsopened = [...state.buttonsopened, action.name];
-            }*/
-            console.log(buttonsopened);
             return {...state, buttonsopened: state.buttonsopened===action.name?'':action.name};
 
         default: 
